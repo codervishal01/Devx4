@@ -49,7 +49,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden bg-muted/30">
+    <section role="region" aria-labelledby="testimonials-heading" className="py-20 lg:py-32 relative overflow-hidden bg-muted/30">
       {/* Background Elements */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-primary-glow/5 rounded-full blur-3xl"></div>
@@ -58,7 +58,7 @@ const Testimonials = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 id="testimonials-heading" className="text-4xl md:text-6xl font-bold mb-6">
               What Our <span className="text-gradient">Clients Say</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

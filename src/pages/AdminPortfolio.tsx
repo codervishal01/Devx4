@@ -185,10 +185,10 @@ export default function AdminPortfolio() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" role="main" aria-labelledby="portfolio-title">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Portfolio Management</h1>
+          <h1 id="portfolio-title" className="text-3xl font-bold text-foreground">Portfolio Management</h1>
           <p className="text-muted-foreground">Manage your projects and portfolio items</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -204,7 +204,7 @@ export default function AdminPortfolio() {
                 {editingProject ? 'Edit Project' : 'Add New Project'}
               </DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-label="Project form">
               <div>
                 <Label htmlFor="title">Title</Label>
                 <Input
@@ -275,7 +275,7 @@ export default function AdminPortfolio() {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="region" aria-label="Projects list">
         {projects.map((project) => (
           <Card key={project.id}>
             <CardHeader>

@@ -25,7 +25,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="about" role="region" aria-labelledby="about-heading" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-0 w-96 h-96 bg-primary-glow/5 rounded-full blur-3xl"></div>
@@ -34,7 +34,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 id="about-heading" className="text-4xl md:text-6xl font-bold mb-6">
               About <span className="text-gradient">DevX4</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

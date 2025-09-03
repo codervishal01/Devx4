@@ -4,7 +4,7 @@ import heroBg from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" role="main" aria-labelledby="hero-heading" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 gradient-animated"></div>
       
@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          <h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
             <span className="text-gradient">Transforming</span>
             <br />
             <span className="text-foreground">Ideas into</span>

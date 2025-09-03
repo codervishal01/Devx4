@@ -40,18 +40,20 @@ export function AdminSidebar() {
   };
 
   return (
-    <div className="h-full bg-card border-r border-border flex flex-col">
+    <div className="h-full bg-card border-r border-border flex flex-col" role="navigation" aria-label="Admin sidebar navigation">
       <div className="p-6 border-b border-border">
         <h2 className="text-xl font-bold text-primary">DevX4 Admin</h2>
       </div>
       
-      <nav className="flex-1 p-4 space-y-2">
+      <nav className="flex-1 p-4 space-y-2" role="list">
         {sidebarItems.map((item) => {
           const isActive = location.pathname === item.url;
           return (
             <NavLink
               key={item.title}
               to={item.url}
+              role="listitem"
+              aria-current={isActive ? 'page' : undefined}
               className={`flex items-center space-x-3 px-3 py-2 rounded-md transition-colors ${
                 isActive 
                   ? 'bg-primary text-primary-foreground' 

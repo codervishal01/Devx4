@@ -59,14 +59,15 @@ export default function AdminAuth() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4" role="document">
+      <main role="main" aria-labelledby="auth-title">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-primary">DevX4 Admin</CardTitle>
+          <CardTitle id="auth-title" className="text-2xl font-bold text-primary">DevX4 Admin</CardTitle>
           <p className="text-muted-foreground">Sign in to access the admin panel</p>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-label="Admin login form">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -75,8 +76,10 @@ export default function AdminAuth() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@devx4.com"
+                aria-describedby="email-help"
                 required
               />
+              <div id="email-help" className="sr-only">Enter your admin email address</div>
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
@@ -86,19 +89,26 @@ export default function AdminAuth() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
+                aria-describedby="password-help"
                 required
               />
+              <div id="password-help" className="sr-only">Enter your admin password</div>
             </div>
             <Button 
               type="submit" 
               className="w-full" 
               disabled={isSubmitting}
+              aria-describedby="submit-status"
             >
               {isSubmitting ? "Signing in..." : "Sign In"}
             </Button>
+            <div id="submit-status" className="sr-only">
+              {isSubmitting ? "Authentication in progress" : "Ready to sign in"}
+            </div>
           </form>
         </CardContent>
       </Card>
+      </main>
     </div>
   );
 }

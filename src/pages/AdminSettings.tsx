@@ -78,15 +78,15 @@ export default function AdminSettings() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" role="main" aria-labelledby="settings-title">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Settings</h1>
+        <h1 id="settings-title" className="text-3xl font-bold text-foreground">Settings</h1>
         <p className="text-muted-foreground">Manage website settings and configuration</p>
       </div>
 
-      <Card>
+      <Card role="region" aria-labelledby="social-settings-title">
         <CardHeader>
-          <CardTitle>Social Media Settings</CardTitle>
+          <CardTitle id="social-settings-title">Social Media Settings</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
@@ -96,8 +96,9 @@ export default function AdminSettings() {
               value={instagramUrl}
               onChange={(e) => setInstagramUrl(e.target.value)}
               placeholder="https://www.instagram.com/devx4official/"
+              aria-describedby="instagram-help"
             />
-            <p className="text-sm text-muted-foreground mt-1">
+            <p id="instagram-help" className="text-sm text-muted-foreground mt-1">
               This URL will be used for the Instagram feed section on the main website.
             </p>
           </div>
@@ -113,9 +114,9 @@ export default function AdminSettings() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card role="region" aria-labelledby="admin-access-title">
         <CardHeader>
-          <CardTitle>Admin Access</CardTitle>
+          <CardTitle id="admin-access-title">Admin Access</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground">

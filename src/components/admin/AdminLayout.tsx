@@ -21,12 +21,12 @@ export function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex">
-      <div className="w-64 hidden md:block">
+    <div className="min-h-screen bg-background flex" role="document">
+      <aside role="complementary" aria-label="Admin navigation sidebar" className="w-64 hidden md:block">
         <AdminSidebar />
-      </div>
-      <div className="flex-1 flex flex-col">
-        <main className="flex-1 p-6">
+      </aside>
+      <div className="flex-1 flex flex-col" role="main">
+        <main className="flex-1 p-6" aria-label="Admin dashboard content">
           <Outlet />
         </main>
       </div>

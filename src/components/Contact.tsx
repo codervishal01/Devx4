@@ -57,7 +57,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="contact" role="region" aria-labelledby="contact-heading" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-glow/10 rounded-full blur-3xl"></div>
@@ -66,7 +66,7 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 id="contact-heading" className="text-4xl md:text-6xl font-bold mb-6">
               Let's <span className="text-gradient">Connect</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -86,11 +86,12 @@ const Contact = () => {
               </div>
 
               {/* Direct Contact Buttons */}
-              <div className="space-y-6">
+              <div className="space-y-6" role="group" aria-label="Contact methods">
                 <Button 
                   onClick={handleCall}
                   className="w-full btn-hero h-16 text-lg"
                   size="lg"
+                  aria-label="Call DevX4 at +91 7999671829"
                 >
                   <Phone className="h-6 w-6 mr-3" />
                   Call Now: +91 7999671829
@@ -101,6 +102,7 @@ const Contact = () => {
                   variant="outline"
                   className="w-full h-16 text-lg border-green-500/50 hover:bg-green-500/10 text-green-400 hover:text-green-300"
                   size="lg"
+                  aria-label="Start WhatsApp chat with DevX4"
                 >
                   <MessageCircle className="h-6 w-6 mr-3" />
                   WhatsApp Chat
@@ -111,6 +113,7 @@ const Contact = () => {
                   variant="outline"
                   className="w-full h-16 text-lg"
                   size="lg"
+                  aria-label="Send email to devx4official@gmail.com"
                 >
                   <Mail className="h-6 w-6 mr-3" />
                   Email: devx4official@gmail.com

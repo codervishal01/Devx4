@@ -67,7 +67,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="services" role="region" aria-labelledby="services-heading" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
       
@@ -75,7 +75,7 @@ const Services = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 id="services-heading" className="text-4xl md:text-6xl font-bold mb-6">
               Our <span className="text-gradient">Services</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

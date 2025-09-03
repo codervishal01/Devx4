@@ -140,10 +140,10 @@ export default function AdminServices() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" role="main" aria-labelledby="services-title">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Services Management</h1>
+          <h1 id="services-title" className="text-3xl font-bold text-foreground">Services Management</h1>
           <p className="text-muted-foreground">Manage your service offerings</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -159,7 +159,7 @@ export default function AdminServices() {
                 {editingService ? 'Edit Service' : 'Add New Service'}
               </DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-label="Service form">
               <div>
                 <Label htmlFor="name">Service Name</Label>
                 <Input
@@ -196,7 +196,7 @@ export default function AdminServices() {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="region" aria-label="Services list">
         {services.map((service) => (
           <Card key={service.id}>
             <CardHeader>

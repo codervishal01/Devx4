@@ -178,10 +178,10 @@ export default function AdminTestimonials() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" role="main" aria-labelledby="testimonials-title">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Testimonials Management</h1>
+          <h1 id="testimonials-title" className="text-3xl font-bold text-foreground">Testimonials Management</h1>
           <p className="text-muted-foreground">Manage client testimonials and reviews</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -197,7 +197,7 @@ export default function AdminTestimonials() {
                 {editingTestimonial ? 'Edit Testimonial' : 'Add New Testimonial'}
               </DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-label="Testimonial form">
               <div>
                 <Label htmlFor="client_name">Client Name</Label>
                 <Input
@@ -234,7 +234,7 @@ export default function AdminTestimonials() {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="region" aria-label="Testimonials list">
         {testimonials.map((testimonial) => (
           <Card key={testimonial.id}>
             <CardHeader>

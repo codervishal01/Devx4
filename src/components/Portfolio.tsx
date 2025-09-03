@@ -157,7 +157,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="portfolio" role="region" aria-labelledby="portfolio-heading" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-glow/10 rounded-full blur-3xl"></div>
       
@@ -165,7 +165,7 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 id="portfolio-heading" className="text-4xl md:text-6xl font-bold mb-6">
               Our <span className="text-gradient">Portfolio</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -175,7 +175,7 @@ const Portfolio = () => {
           </div>
 
           {/* Status Filter */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-12" role="group" aria-label="Portfolio filter options">
             <div className="flex gap-2 bg-card p-1 rounded-lg border">
               <Button
                 variant={statusFilter === 'all' ? 'default' : 'ghost'}
@@ -202,7 +202,7 @@ const Portfolio = () => {
           </div>
 
           {/* Carousel Controls */}
-          <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="flex items-center justify-center gap-4 mb-8" role="group" aria-label="Carousel controls">
             <Button
               variant="outline"
               size="sm"
@@ -244,6 +244,9 @@ const Portfolio = () => {
               <div 
                 ref={carouselRef}
                 className="relative overflow-hidden rounded-2xl"
+                role="region"
+                aria-label="Portfolio carousel"
+                aria-live="polite"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onTouchStart={handleTouchStart}
@@ -350,11 +353,13 @@ const Portfolio = () => {
               </div>
 
               {/* Dots Indicator */}
-              <div className="flex justify-center mt-8 gap-2">
+              <div className="flex justify-center mt-8 gap-2" role="group" aria-label="Carousel navigation dots">
                 {projects.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={index === currentIndex ? 'true' : 'false'}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIndex 
                         ? 'bg-primary scale-125' 

@@ -71,14 +71,14 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" role="main" aria-labelledby="dashboard-title">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+        <h1 id="dashboard-title" className="text-3xl font-bold text-foreground">Dashboard</h1>
         <p className="text-muted-foreground">Overview of your DevX4 portfolio</p>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="region" aria-label="Dashboard statistics">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Projects</CardTitle>
@@ -121,13 +121,13 @@ export default function AdminDashboard() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6" role="region" aria-label="Dashboard charts">
         <Card>
           <CardHeader>
-            <CardTitle>Projects by Category</CardTitle>
+            <CardTitle id="category-chart-title">Projects by Category</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={300} role="img" aria-labelledby="category-chart-title">
               <BarChart data={stats.projectsByCategory}>
                 <XAxis dataKey="category" />
                 <YAxis />
@@ -140,10 +140,10 @@ export default function AdminDashboard() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Project Status Distribution</CardTitle>
+            <CardTitle id="status-chart-title">Project Status Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={300} role="img" aria-labelledby="status-chart-title">
               <PieChart>
                 <Pie
                   data={[

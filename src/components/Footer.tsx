@@ -46,7 +46,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-muted/30 border-t border-border/50 relative overflow-hidden">
+    <footer role="contentinfo" className="bg-muted/30 border-t border-border/50 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       
@@ -80,13 +80,14 @@ const Footer = () => {
               </div>
 
               {/* Social Links */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-4" role="group" aria-label="Social media links">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Visit our ${social.name} page`}
                     className="w-10 h-10 bg-card border border-border rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300 hover:scale-110"
                   >
                     <social.icon className="h-5 w-5" />
@@ -96,7 +97,7 @@ const Footer = () => {
             </div>
 
             {/* Links Sections */}
-            <div className="space-y-6">
+            <nav className="space-y-6" role="navigation" aria-label="Services navigation">
               <h4 className="text-lg font-bold text-foreground">Services</h4>
               <ul className="space-y-3">
                 {footerLinks.services.map((link, index) => (
@@ -111,9 +112,9 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
-            <div className="space-y-6">
+            <nav className="space-y-6" role="navigation" aria-label="Company navigation">
               <h4 className="text-lg font-bold text-foreground">Company</h4>
               <ul className="space-y-3">
                 {footerLinks.company.map((link, index) => (
@@ -128,9 +129,9 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
-            <div className="space-y-6">
+            <nav className="space-y-6" role="navigation" aria-label="Resources navigation">
               <h4 className="text-lg font-bold text-foreground">Resources</h4>
               <ul className="space-y-3">
                 {footerLinks.resources.map((link, index) => (
@@ -145,12 +146,12 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           </div>
         </div>
 
         {/* Newsletter Section */}
-        <div className="py-8 border-t border-border/50">
+        <div className="py-8 border-t border-border/50" role="complementary" aria-label="Newsletter subscription">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
               <h4 className="text-xl font-bold text-foreground mb-2">Stay Updated</h4>
@@ -160,6 +161,8 @@ const Footer = () => {
             <div className="flex w-full lg:w-auto">
               <input
                 type="email"
+                aria-label="Email address for newsletter subscription"
+                aria-describedby="newsletter-description"
                 placeholder="Enter your email"
                 className="flex-1 lg:w-80 px-4 py-3 bg-input border border-border rounded-l-lg focus:outline-none focus:border-primary text-foreground"
               />

@@ -97,27 +97,27 @@ const ProjectsByCategory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" role="document">
       {/* Header */}
-      <div className="bg-card border-b">
+      <header role="banner" className="bg-card border-b">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-4 mb-4">
+          <nav role="navigation" aria-label="Breadcrumb navigation" className="flex items-center gap-4 mb-4">
             <Link to="/">
               <Button variant="outline" size="sm">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
               </Button>
             </Link>
-          </div>
-          <h1 className="text-4xl font-bold text-gradient">{categoryName} Projects</h1>
+          </nav>
+          <h1 id="page-heading" className="text-4xl font-bold text-gradient">{categoryName} Projects</h1>
           <p className="text-muted-foreground mt-2">
             Explore our {categoryName.toLowerCase()} portfolio and see our work in action
           </p>
         </div>
-      </div>
+      </header>
 
       {/* Projects Grid */}
-      <div className="container mx-auto px-4 py-12">
+      <main role="main" aria-labelledby="page-heading" className="container mx-auto px-4 py-12">
         {projects.length === 0 ? (
           <div className="text-center py-16">
             <h3 className="text-2xl font-semibold mb-4">No Projects Found</h3>
@@ -126,12 +126,21 @@ const ProjectsByCategory = () => {
             </p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="grid" aria-label={`${categoryName} projects gallery`}>
             {projects.map((project) => (
               <div 
                 key={project.id} 
+                role="gridcell"
                 className="card-glow rounded-2xl p-6 group cursor-pointer hover:scale-105 transform transition-all duration-300"
                 onClick={() => handleCardClick(project)}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleCardClick(project);
+                  }
+                }}
+                aria-label={`View details for ${project.title}`}
               >
                 {/* Project Image */}
                 <div className="aspect-video rounded-lg overflow-hidden mb-6 bg-muted relative">
@@ -172,7 +181,7 @@ const ProjectsByCategory = () => {
                   </p>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-2 pt-2">
+                  <div className="flex gap-2 pt-2" role="group" aria-label="Project actions">
                     {project.project_link && (
                       <Button 
                         variant="outline" 
@@ -205,24 +214,25 @@ const ProjectsByCategory = () => {
             ))}
           </div>
         )}
-      </div>
+      </main>
 
       {/* Contact Section */}
-      <div className="bg-card border-t">
+      <section role="complementary" aria-labelledby="cta-heading" className="bg-card border-t">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
+            <h2 id="cta-heading" className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Let's discuss how we can help bring your vision to life. Get in touch with us today!
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto" role="group" aria-label="Contact options">
             <Button 
               variant="outline" 
               size="lg" 
               className="h-16 flex flex-col items-center justify-center gap-2"
               onClick={handleCall}
+              aria-label="Call DevX4 at +91 7999671829"
             >
               <Phone className="h-6 w-6" />
               <span>Call Us</span>
@@ -233,6 +243,7 @@ const ProjectsByCategory = () => {
               size="lg" 
               className="h-16 flex flex-col items-center justify-center gap-2"
               onClick={handleWhatsApp}
+              aria-label="Start WhatsApp chat with DevX4"
             >
               <MessageCircle className="h-6 w-6" />
               <span>WhatsApp</span>
@@ -243,25 +254,27 @@ const ProjectsByCategory = () => {
               size="lg" 
               className="h-16 flex flex-col items-center justify-center gap-2"
               onClick={handleEmail}
+              aria-label="Send email to devx4official@gmail.com"
             >
               <Mail className="h-6 w-6" />
               <span>Email</span>
             </Button>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Image Modal */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden" role="dialog" aria-labelledby="modal-title">
           <DialogHeader>
-            <DialogTitle className="flex items-center justify-between">
+            <DialogTitle id="modal-title" className="flex items-center justify-between">
               <span>{selectedProject?.title}</span>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={closeModal}
                 className="h-8 w-8 p-0"
+                aria-label="Close project details modal"
               >
                 <X className="h-4 w-4" />
               </Button>

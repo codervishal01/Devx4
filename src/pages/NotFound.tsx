@@ -12,14 +12,14 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100" role="document">
+      <main role="main" aria-labelledby="error-title" className="text-center">
+        <h1 id="error-title" className="text-4xl font-bold mb-4">404</h1>
         <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
+        <a href="/" className="text-blue-500 hover:text-blue-700 underline" aria-label="Return to DevX4 homepage">
           Return to Home
         </a>
-      </div>
+      </main>
     </div>
   );
 };
